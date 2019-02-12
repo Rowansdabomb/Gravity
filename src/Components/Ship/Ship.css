@@ -1,0 +1,10 @@
+.ship {
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  border-radius: 10px;
+  margin-left: -5px;
+  margin-top: -5px;
+  background-color: #555;
+  transform: translate(-50%, -50%);
+}

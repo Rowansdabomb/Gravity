@@ -1,0 +1,23 @@
+.green {
+  background-color: #0b04;
+}
+
+.red {
+  background-color: #b004;
+}
+
+.green-font {
+  color: #0b0;
+}
+
+.red-font {
+  color: #f00;
+}
+
+.green-solid {
+  background-color: #0b0;
+}
+
+.red-solid {
+  background-color: #f00;
+}
