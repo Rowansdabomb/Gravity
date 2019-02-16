@@ -18,6 +18,8 @@ import { levels } from "../../Levels/levels.js";
 import { radiusFromMass } from "../../helpers.js";
 
 const promptDuration = 1500;
+const spaceHeight = 500;
+const spaceWidth = spaceHeight;
 
 class Space extends React.Component {
   constructor(props) {
@@ -44,6 +46,8 @@ class Space extends React.Component {
     }
   }
 
+  
+
   calculateShipAcceleration() {
     const t = this.props.interval / 1000;
     let dX = 0;
@@ -52,6 +56,12 @@ class Space extends React.Component {
     let vY = this.props.ship.vY;
     let aX = 0;
     let aY = 0;
+    if (this.props.ship.posX < 0 || this.props.ship.posX > spaceWidth || this.props.ship.posY < 0 || this.props.ship.posY > spaceHeight) {
+      if (this.props.message === null) this.props.prompt("Fail");
+      setTimeout(() => {
+        this.props.resetGame();
+      }, promptDuration);
+    }
 
     for (const planet of Object.values(this.props.planets)) {
       const rX = planet.posX - this.props.ship.posX;
@@ -119,8 +129,9 @@ class Space extends React.Component {
   }
 
   render() {
+    const spaceSize = {  width: spaceWidth, height: spaceHeight}
     return (
-      <div id="space" className="space-container">
+      <div id="space" style={spaceSize} className="space-container">
         {Object.values(this.props.planets).map((planet, index) => {
           return this.renderPlanets(planet, index);
         })}
