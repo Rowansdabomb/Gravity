@@ -64,7 +64,8 @@ class Game extends Component {
   render() {
     return (
       <div className="page-container">
-        <span>Drag the space rock and press start</span>
+        <span>Drag the space rock and press start</span> 
+
         <Space interval={this.interval} />
 
         {this.props.message !== null && <div className={`game-prompt ${this.props.message === "Fail" ? "red-font" : "green-font"}`}>{this.props.message}</div>}
@@ -83,7 +84,7 @@ class Game extends Component {
             return (
               <div
                 key={"level" + index}
-                className={`button ${this.props.levelsCleared.includes(level) ? "green": ""}`}
+                className={`button ${this.props.levelsCleared.includes(index) ? "green": ""}`}
                 onClick={() => {
                   this.selectLevel(index);
                 }}

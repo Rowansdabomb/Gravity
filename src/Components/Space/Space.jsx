@@ -15,6 +15,7 @@ import {
 import "./Space.css";
 import { G } from "../../Constants.js";
 import { levels } from "../../Levels/levels.js";
+import { radiusFromMass } from "../../helpers.js";
 
 const promptDuration = 1500;
 
@@ -57,17 +58,15 @@ class Space extends React.Component {
       const rY = planet.posY - this.props.ship.posY;
 
       const r = Math.sqrt(rX * rX + rY * rY);
-
-      if (r <= planet.radius + 2 * this.props.ship.radius - 2) {
+      const planetRadius = radiusFromMass(planet.mass);
+      if (r <= planetRadius + 2 * this.props.ship.radius - 2) {
+        
         vX = 0;
         vY = 0;
         aX = 0;
         aY = 0;
         if (planet.type === "goal") {
-          if (this.props.message === null) {
-            this.props.prompt("Success");
-          }
-          
+          if (this.props.message === null) this.props.prompt("Success");
           setTimeout(() => {
             this.props.clearLevel(this.props.level);
             this.props.resetGame();

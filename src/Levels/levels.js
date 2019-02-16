@@ -4,6 +4,7 @@ export const levels = [
     ship: {
       mass: 1,
       radius: 5,
+      rotation: -270,
       posX: 250,
       posY: 150,
       aX: 0,
@@ -15,7 +16,6 @@ export const levels = [
       {
         type: "goal",
         mass: 20000,
-        radius: 25,
         posX: 250,
         posY: 250
       }
@@ -26,6 +26,7 @@ export const levels = [
     ship: {
       mass: 1,
       radius: 5,
+      rotation: -270,
       posX: 250,
       posY: 150,
       aX: 0,
@@ -37,14 +38,12 @@ export const levels = [
       {
         type: "goal",
         mass: 10000,
-        radius: 25,
         posX: 200,
         posY: 100
       },
       {
         type: "void",
         mass: 15000,
-        radius: 35,
         posX: 250,
         posY: 250
       }
@@ -55,6 +54,7 @@ export const levels = [
     ship: {
       mass: 1,
       radius: 5,
+      rotation: -270,
       posX: 250,
       posY: 150,
       aX: 0,
@@ -66,21 +66,18 @@ export const levels = [
       {
         type: "void",
         mass: 10000,
-        radius: 25,
         posX: 200,
         posY: 100
       },
       {
         type: "void",
         mass: 15000,
-        radius: 35,
         posX: 250,
         posY: 250
       },
       {
         type: "goal",
         mass: 25000,
-        radius: 20,
         posX: 250,
         posY: 350
       }

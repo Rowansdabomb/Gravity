@@ -23,6 +23,16 @@
   display: flex;
 }
 
+.inputs {
+  display: flex;
+  justify-content: space-between;
+  width: 320px;
+}
+
+.inputs input {
+  max-width: 50px;
+}
+
 .level-select {
   display: flex;
 }

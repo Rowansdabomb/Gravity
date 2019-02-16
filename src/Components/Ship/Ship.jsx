@@ -16,7 +16,9 @@ class Ship extends React.Component {
       posX: this.props.ship.posX,
       posY: this.props.ship.posY,
       relX: 0,
-      relY: 0
+      relY: 0,
+      iVX: 0,
+      iVY: 0
     };
   }
 
@@ -39,17 +41,23 @@ class Ship extends React.Component {
     }
   }
 
+  shouldComponentUpdate() {
+    
+  }
+
   onMouseDown(e) {
     // left or right mouse button
-    if (e.button !== 0) return;
     const posLeft = document.getElementById("ship").offsetLeft;
     const posTop = document.getElementById("ship").offsetTop;
-    this.setState({
-      dragging: true,
-      button: e.button,
-      relX: e.pageX - posLeft,
-      relY: e.pageY - posTop
-    });
+    if (e.button === 0 || e.button === 1) {
+      this.setState({
+        dragging: true,
+        button: e.button,
+        relX: e.pageX - posLeft,
+        relY: e.pageY - posTop
+      });
+    } 
+
     e.stopPropagation();
     e.preventDefault();
   }
@@ -66,36 +74,50 @@ class Ship extends React.Component {
 
   onMouseMove(e) {
     if (!this.state.dragging || this.props.gameActive) return;
-    this.setState(
-      {
-        posX:
-          e.pageX - this.state.relX + this.state.iX + this.props.ship.radius,
-        posY: e.pageY - this.state.relY + this.state.iY + this.props.ship.radius
-      },
-      () => {
-        this.props.updateShip({ posX: this.state.posX, posY: this.state.posY });
-      }
-    );
+    const relX = this.state.relX;
+    const relY = this.state.relY;
+    if (this.state.button === 1) {
+      this.setState(
+        {
+          vX: e.pageX - relX + this.props.ship.radius,
+          vY: e.pageY - relY + this.props.ship.radius
+        },
+        () => {
+          this.props.updateShip({ vX: this.state.vX, vY: this.state.vY });
+        }
+      );
+    }
+    if (this.state.button === 0) {
+      this.setState(
+        {
+          posX: e.pageX - relX + this.state.iX + this.props.ship.radius,
+          posY: e.pageY - relY + this.state.iY + this.props.ship.radius
+        },
+        () => {
+          this.props.updateShip({ posX: this.state.posX, posY: this.state.posY });
+        }
+      );
+    }
+
     e.stopPropagation();
     e.preventDefault();
   }
 
   render() {
+    const radius = Math.sqrt(Math.pow(this.props.ship.vX, 2) + Math.pow(this.props.ship.vY, 2))
+    const theta = -Math.atan2(this.props.ship.vX, this.props.ship.vY)*180 / Math.PI - 270
+
+    const velocity = {width: radius, transform: `rotate(${theta}deg)`}
+
     const position = {
       transform: `translate3d(${this.props.ship.posX}px, ${
         this.props.ship.posY
       }px, 0)`
     };
 
-    const size = {
-      marginLeft: -this.props.ship.radius,
-      marginTop: -this.props.ship.radius,
-      width: 2 * this.props.ship.radius,
-      height: 2 * this.props.ship.radius,
-      borderRadius: 2 * this.props.ship.radius
-    };
+    const rotation = {transform: `rotate(${theta + 90}deg)` }
 
-    const style = { ...size, ...position };
+    const style = { ...position };
 
     return (
       <div
@@ -105,7 +127,10 @@ class Ship extends React.Component {
         onMouseDown={e => {
           this.onMouseDown(e);
         }}
-      />
+      > 
+        <div className="ship-image" style={rotation}></div>
+        {!this.props.gameActive && <div className="velocity-vector"  style={velocity}/> }
+      </div>
     );
   }
 }
