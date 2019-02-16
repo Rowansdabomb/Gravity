@@ -64,7 +64,9 @@ class Game extends Component {
   render() {
     return (
       <div className="page-container">
-        <span>Drag the space rock and press start</span> 
+        <span> Drag with left click to move the spaceship</span>
+        <span> Drag with middle click to set initial velocity</span> 
+        <span> Press start to simulate orbit </span>
 
         <Space interval={this.interval} />
 

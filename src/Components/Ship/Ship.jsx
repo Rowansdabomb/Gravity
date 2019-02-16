@@ -41,9 +41,9 @@ class Ship extends React.Component {
     }
   }
 
-  shouldComponentUpdate() {
-    
-  }
+  // shouldComponentUpdate() {
+
+  // }
 
   onMouseDown(e) {
     // left or right mouse button
