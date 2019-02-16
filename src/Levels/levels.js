@@ -10,7 +10,8 @@ export const levels = [
       aX: 0,
       aY: 0,
       vX: 0,
-      vY: 0
+      vY: 0,
+      tail: [[250, 150]]
     },
     planets: [
       {
@@ -32,7 +33,8 @@ export const levels = [
       aX: 0,
       aY: 0,
       vX: 0,
-      vY: 0
+      vY: 0,
+      tail: [[250, 150]]
     },
     planets: [
       {
@@ -60,7 +62,8 @@ export const levels = [
       aX: 0,
       aY: 0,
       vX: 0,
-      vY: 0
+      vY: 0,
+      tail: [[250, 150]]
     },
     planets: [
       {

@@ -18,7 +18,7 @@ class Ship extends React.Component {
       relX: 0,
       relY: 0,
       iVX: 0,
-      iVY: 0
+      iVY: 0,
     };
   }
 

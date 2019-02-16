@@ -108,7 +108,8 @@ class Space extends React.Component {
       vX: vX,
       vY: vY,
       posX: this.props.ship.posX + dX,
-      posY: this.props.ship.posY + dY
+      posY: this.props.ship.posY + dY,
+      tail: this.props.ship.tail.concat([[this.props.ship.posX + dX, this.props.ship.posY + dY]])
     });
   }
 
@@ -135,7 +136,11 @@ class Space extends React.Component {
         {Object.values(this.props.planets).map((planet, index) => {
           return this.renderPlanets(planet, index);
         })}
-
+        {this.props.ship.tail.map((coords, index) => {
+          return(
+            <div style={{position: 'absolute', left: coords[0], top: coords[1] + 4, backgroundColor: 'black', height: 2, width: 2}}></div> 
+          )
+        })}
         <Ship
           data={this.props.ship}
           reset={this.props.reset}
