@@ -18,7 +18,7 @@ import { levels } from "../../Levels/levels.js";
 import { radiusFromMass } from "../../helpers.js";
 
 const promptDuration = 1500;
-const spaceHeight = 500;
+const spaceHeight = 700;
 const spaceWidth = spaceHeight;
 
 class Space extends React.Component {
