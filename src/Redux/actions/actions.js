@@ -20,6 +20,12 @@ export const updatePlanets = planets => ({
   planets: planets
 });
 
+export const updatePlanet = (planet, index) => ({
+  type: actionTypes.UPDATE_PLANET,
+  planet: planet,
+  index: index
+})
+
 export const incrementClock = clock => ({
   type: actionTypes.INCREMENT_CLOCK,
   clock: clock
@@ -44,4 +50,12 @@ export const startGame = () => ({
 
 export const stopGame = () => ({
   type: actionTypes.STOP_GAME
+});
+
+export const createMode = () => ({
+  type: actionTypes.CREATE_MODE
+});
+
+export const gameMode = () => ({
+  type: actionTypes.GAME_MODE
 });

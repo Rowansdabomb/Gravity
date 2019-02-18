@@ -20,10 +20,10 @@ yarn-debug.log*
 yarn-error.log*
 
 # production
-# /build
+/build
 
 # #.gitignore for heroku build
-src/*
-public/*
-build/static/css/*.map
-build/static/js/*.map
+# src/*
+# public/*
+# build/static/css/*.map
+# build/static/js/*.map

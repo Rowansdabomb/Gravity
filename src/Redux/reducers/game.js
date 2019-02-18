@@ -1,12 +1,16 @@
 import actionTypes from "../actions/actionTypes.js";
+import {frameRate} from "../../Constants.js"
+
 
 const initialState = {
+  interval: 1000 / frameRate,
   gameActive: false,
   reset: false,
   clock: 0,
   level: 0,
   levelsCleared: [],
-  message: null
+  message: null,
+  creatorMode: false
 };
 
 const game = (state = initialState, action) => {
@@ -58,6 +62,16 @@ const game = (state = initialState, action) => {
         ...state,
         gameActive: false
       };
+    case actionTypes.CREATE_MODE:
+      return {
+        ...state,
+        creatorMode: true
+      }
+    case actionTypes.GAME_MODE:
+      return {
+        ...state,
+        creatorMode: false
+      }
     default:
       return state;
   }

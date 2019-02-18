@@ -26,3 +26,12 @@
   background-color: #555;
   transform-origin: left center;
 }
+
+.ship-tail {
+  position: relative;
+  left: 50%;
+  top: -80%;
+  height: 1px;
+  width: 1px;
+  background-color: #555;
+}
